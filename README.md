@@ -3,6 +3,19 @@ Simple command line file hex viewer.
 
 ## Usage
 ```
+Usage: hexy-script.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -f FILENAME, --file=FILENAME
+                        Filename to hexdump
+  -c COLUMNS, --columns=COLUMNS
+                        Hex columns count
+  --version             Prints package version and exits
+```
+
+## Example - dump of setup.py in hex with 16 columns
+```
 $ hexy -f setup.py -c 16
 ```
 
