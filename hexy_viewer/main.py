@@ -55,7 +55,7 @@ def hexy_load_chunk(f, chunksize=32):
 
 def hexy_view_file(filename, line_len = 16):
     result = 0
-    special_red = [0x0D, 0x0A]
+    special_yellow = [0x0D, 0x0A]
 
     # string.printable
     # string.whitespace
@@ -65,7 +65,9 @@ def hexy_view_file(filename, line_len = 16):
             line_print = ""
             for b in hexy_load_chunk(f):
 
-                if ord(b) in special_red:
+                if ord(b) in special_yellow:
+                    sys.stdout.write(colorama.Back.YELLOW)
+                if ord(b) > 0x7F:
                     sys.stdout.write(colorama.Back.RED)
                 sys.stdout.write("%02X"% ord(b))
                 sys.stdout.write(colorama.Back.RESET)
@@ -74,7 +76,9 @@ def hexy_view_file(filename, line_len = 16):
                 if b in string.printable and b not in string.whitespace:
                     line_print += b
                 else:
-                    if ord(b) in special_red:
+                    if ord(b) in special_yellow:
+                        line_print += colorama.Back.YELLOW
+                    elif ord(b) > 0x7F:
                         line_print += colorama.Back.RED
                     line_print += " "
                     line_print += colorama.Back.RESET
