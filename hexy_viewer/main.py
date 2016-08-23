@@ -25,13 +25,13 @@ def cmd_parser_setup():
 
     parser.add_option('-f', '--file',
                       dest='filename',
-                      help='Filename to hexdump')
+                      help='FIle name to open and print on screen its hexadecimal values')
 
     parser.add_option('-c', '--columns',
                       dest='columns',
                       default=16,
                       type=int,
-                      help='Hex columns count')
+                      help='How many columns should be displayed per file, default: 16')
 
     parser.add_option('', '--version',
                       dest='version',
@@ -57,12 +57,16 @@ def hexy_view_file(filename, line_len = 16):
     result = 0
     special_yellow = [0x0D, 0x0A]
 
+    # Default column lenght is set to 16
+    if line_len <= 0:
+        line_len = 16
+
     # string.printable
     # string.whitespace
     try:
         with open(filename, "rb") as f:
             lint_cnt = 1
-            line_print = ""
+            line_print = str()
             for b in hexy_load_chunk(f):
 
                 if ord(b) in special_yellow:
@@ -96,8 +100,7 @@ def hexy_view_file(filename, line_len = 16):
                 lint_cnt += 1
             print " | ", line_print
     except Exception as e:
-        print str(e)
-        print "Error opening file..."
+        print "Error opening input file file '%s': "% filename, str(e)
         result = -1
     return result
 
