@@ -28,7 +28,7 @@ from setuptools import find_packages
 
 
 LICENSE = open('LICENSE').read()
-DESCRIPTION = "mbed 3.0 Unified Test Framework"
+DESCRIPTION = "Simple hexadecimal file viewer"
 OWNER_NAMES = 'Przemyslaw Wirkus'
 OWNER_EMAILS = 'Przemyslaw.Wirkus@arm.com'
 
