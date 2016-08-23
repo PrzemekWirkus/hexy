@@ -1,5 +1,19 @@
 # Description 
-Simple command line file hex viewer.
+
+This simple command line tool allows you to see text files in hex mode. If you want to have a quick view on file with ascii and hexadecimal view this simple tool is for you. 
+
+Use command line switch to:
+* `-f <filename>` is used to select a file you want to open
+* `-c <int>` is used to tell `hexy` how many columns of hexadecimal you want to see on your secree. Default value is set to 16.
+
+# Installation
+
+For Python 2.7 users just type:
+```
+$ sudo pip install hexy-viewer
+```
+
+From now on you will have access to command line tool called `hexy` which facilitates hexy-viewer simple features.
 
 ## Usage
 ```
